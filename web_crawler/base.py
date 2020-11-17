@@ -44,7 +44,7 @@ class WebCrawler:
 
     async def crawl(self, url):
         """Crawls recursively one by one off `self.queue`, indexing
-        the already crawled document in a directory hierarchy.
+        the already crawled documents in a directory hierarchy.
 
         :param: url (``str``)       -> URL currently being crawled
         """
