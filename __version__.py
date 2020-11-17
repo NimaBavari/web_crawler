@@ -1,0 +1,8 @@
+__title__ = 'web_crawler'
+__description__ = 'A Web Crawling Library for Python!'
+__url__ = 'not-yet'
+__version__ = '0.0.1'
+__author__ = 'Nima Bavari'
+__author_email__ = 'nima.bavari@gmail.com'
+__license__ = 'not-yet'
+__copyright__ = 'Copyright 2020 (c) Nima Bavari'

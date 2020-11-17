@@ -5,27 +5,53 @@ import aiofiles
 
 
 class URLHandler:
-    """Custom URL Handler."""
+    """Custom URL handler.
+
+    :param: href (``str``)      -> an absolute or relative link URL
+    """
 
     def __init__(self, href):
         self.href = href
 
     @property
     def is_inline(self):
+        """Checks if link is inline.
+
+        :returns: (``bool``)    -> if link points to the current page
+        """
         return self.href == '' or self.href == '/' or self.href.startswith('#')
 
     @property
     def domain_name(self):
+        """Domain name of link.
+
+        :returns: (``str``)     -> NetLoc of link
+        """
         return urlparse(self.href).netloc
 
     def to_absolute(self, base):
+        """Converts link to an absolute url.
+
+        :param: base (``str``)  -> base URL of link
+        :returns: (``str``)     -> absolute URL of link
+        """
         return urljoin(base, self.href)
 
     def to_relative(self):
+        """Converts link to a relative URL.
+
+        :returns: (``str``)     -> relative URL of link
+        """
         return urlparse(self.href).path
 
 
 def secure_filename(name):
+    """Converts a relative URL path to a secure filename. A secure
+    filename means one that is not confused with a directory.
+
+    :param: name (``str``)      -> relative URL
+    :returns: (``str``)         -> secure filename
+    """
     return name[:-1] if name.endswith('/') else name
 
 
