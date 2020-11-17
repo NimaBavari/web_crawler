@@ -56,11 +56,22 @@ def secure_filename(name):
 
 
 def make_domain_dir(directory):
+    """Creates a directory if not already exists.
+
+    :param: directory (``str``) -> directory to be created, absolute
+    """
     if not os.path.exists(directory):
         os.makedirs(directory)
 
 
 async def make_document(url, content, data_dir):
+    """Creates the document in the given path and writes into it the
+    given content.
+
+    :param: url (``str``)       -> URL of the document to be created
+    :param: content (``str``)   -> content of the document to be created
+    :param: data_dir (``str``)  -> path to the data directory
+    """
     handler = URLHandler(url)
     domain_name = handler.domain_name
     domain_dir = os.path.join(data_dir, domain_name)
@@ -71,4 +82,10 @@ async def make_document(url, content, data_dir):
 
 
 def get_all_document_names(directory):
+    """Fetches all document names in the given directory recursively.
+
+    :param: directory (``str``) -> path to the directory to be searched
+    :returns: (``list``)        -> list of all the document names in the
+                                   directory
+    """
     return [f for dp, dn, filenames in os.walk(directory) for f in filenames]
